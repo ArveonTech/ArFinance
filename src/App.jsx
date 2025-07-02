@@ -1,23 +1,52 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import DashboardMenuPages from "./components/pages/DashboardMenuPages";
+import DashboardMenuLayout from "./components/pages/DashboardMenuLayout";
+import AddPages from "./components/pages/AddPages";
+import HistoryPages from "./components/pages/HistoryPages";
+import AnalysisPages from "./components/pages/AnalysisPages";
+import SettingsPages from "./components/pages/SettingsPages";
 import NotFoundPages from "./components/pages/NotFoundPages";
+import HomePages from "./components/pages/HomePages";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <DashboardMenuPages />,
+    element: (
+      <DashboardMenuLayout>
+        <HomePages />
+      </DashboardMenuLayout>
+    ),
   },
   {
-    path: "/",
-    element: <DashboardMenuPages />,
+    path: "/add",
+    element: (
+      <DashboardMenuLayout>
+        <AddPages />
+      </DashboardMenuLayout>
+    ),
   },
   {
-    path: "/",
-    element: <DashboardMenuPages />,
+    path: "/history",
+    element: (
+      <DashboardMenuLayout>
+        <HistoryPages />
+      </DashboardMenuLayout>
+    ),
   },
   {
-    path: "/",
-    element: <DashboardMenuPages />,
+    path: "/analysis",
+    element: (
+      <DashboardMenuLayout>
+        <AnalysisPages />
+      </DashboardMenuLayout>
+    ),
+  },
+  {
+    path: "/settings",
+    element: (
+      <DashboardMenuLayout>
+        <SettingsPages />
+      </DashboardMenuLayout>
+    ),
   },
   {
     path: "*",
