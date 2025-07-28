@@ -57,7 +57,7 @@ Visualisasi & analisis data keuangan:
 
 - Pie chart: distribusi pengeluaran per kategori
 - Bar chart: tren bulanan
-- Insight: kategori paling boros, rata-rata harian, dll
+- Insight: 📉 Paling hemat: Transport (Rp20.000) | Jumlah transaksi: 25 pengeluaran, 10 pemasukan | Hari paling boros: 12 Juli (Rp250.000)
 
 ---
 

@@ -17,7 +17,7 @@ const LastAdded = ({ data }) => {
         data.map((items) => (
           <div
             key={items}
-            className={`grid grid-cols-[auto_1fr] gap-x-2 bg-gradient-to-br w-[300px] p-4 rounded-2xl text-white font-mono text-lg cursor-pointer ${
+            className={`grid grid-cols-[auto_1fr] gap-x-2 bg-gradient-to-br w-[300px] p-4 rounded-3xl text-white font-mono text-lg cursor-pointer ${
               items.type === "income" ? "from-green-400 to-green-700/65 hover:bg-green-800" : "from-red-400 to-red-700/65 hover:bg-red-800"
             }`}
           >

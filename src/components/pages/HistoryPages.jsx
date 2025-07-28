@@ -5,6 +5,10 @@ import { useNavigate } from "react-router";
 import { deleteRecord } from "../features/financeDataSlice";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { statusCreate } from "../features/createStatusSlice";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
 
 const HistoryPages = () => {
   const navigate = useNavigate();
@@ -76,12 +80,18 @@ const HistoryPages = () => {
           </button>
         ))}
       </div>
-      <div className="flex justify-center mt-10 gap-10 px-10 flex-wrap my-10">
+      <div className="flex justify-center mt-10 gap-10 px-10 flex-wrap my-10 relative overflow-hidden">
         {dataHistory && dataHistory.length > 0 ? (
           dataHistory
             .filter((items) => !filterMap || items.type.toLowerCase() === filterMap.toLowerCase())
             .map((items, i) => (
-              <div className={`bg-gradient-to-br w-96 p-4 rounded-2xl text-white font-mono text-lg  ${items.type === "income" ? "from-green-400 to-green-700/65 hover:bg-green-800" : "from-red-400 to-red-700/65 hover:bg-red-800"}`} key={i}>
+              <div
+                className={`bg-gradient-to-br w-96 p-4 rounded-2xl text-white font-mono text-lg  ${items.type === "income" ? "from-green-400 to-green-700/65 hover:bg-green-800" : "from-red-400 to-red-700/65 hover:bg-red-800"}`}
+                key={i}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
+                data-aos-once="true"
+              >
                 <div className="flex justify-between mb-2">
                   <div className="flex gap-3 items-center">
                     <Trash strokeWidth={3} className="cursor-pointer" onClick={() => handleDelete(items)} />

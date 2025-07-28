@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRecord, editRecord, deleteRecord } from "../features/financeDataSlice";
 import { ToastContainer, toast, Bounce } from "react-toastify";
-import { CalendarDays, SquarePen, CirclePoundSterling, RefreshCcw, ListTree, Plus } from "lucide-react";
+import { CalendarDays, SquarePen, CirclePoundSterling, RefreshCcw, ListTree, Plus, Save } from "lucide-react";
 import { useLocation, useNavigate } from "react-router";
 import { statusCreate } from "../features/createStatusSlice";
 
@@ -57,10 +57,10 @@ const AddPages = () => {
   }, [dataEdit]);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -229,7 +229,8 @@ const AddPages = () => {
           </div>
 
           {/* Submit Button */}
-          <button type="submit" className="w-full bg-emerald-500/80 hover:bg-emerald-700/90 backdrop-blur-md text-white font-semibold py-2 px-4 rounded-lg shadow-md transition cursor-pointer">
+          <button type="submit" className="w-full bg-emerald-500/80 hover:bg-emerald-700/90 backdrop-blur-md text-white font-semibold py-2 px-4 rounded-lg shadow-md transition cursor-pointer flex justify-center gap-2">
+            <Save />
             Save
           </button>
         </div>

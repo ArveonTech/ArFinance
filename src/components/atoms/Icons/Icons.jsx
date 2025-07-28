@@ -10,11 +10,9 @@ const Icons = ({ activeTitle = true, activeIcons = true }) => {
     { path: "/", icon: <House />, title: "Home" },
     { path: "/add", icon: <Plus />, title: [statusCreate] },
     { path: "/history", icon: <History />, title: "History" },
-    { path: "/analysis", icon: <ChartLine />, title: "Analysis" },
+    { path: "/analytics", icon: <ChartLine />, title: "Analytics" },
     { path: "/settings", icon: <Settings />, title: "Settings" },
   ];
-
-  console.log(statusCreate);
 
   return (
     <>
@@ -22,8 +20,8 @@ const Icons = ({ activeTitle = true, activeIcons = true }) => {
         <li key={i}>
           <Link to={items.path}>
             <div className="flex gap-2">
-              {activeIcons && <span className={`${location.pathname === items.path && "drop-shadow-md drop-shadow-green-500"}`}>{items.icon}</span>}
-              {activeTitle && <span className="font-bold">{items.title}</span>}
+              {activeIcons && <span className={`${location.pathname === items.path && "drop-shadow-sm drop-shadow-green-600"}`}>{items.icon}</span>}
+              {activeTitle && <span className={`${location.pathname === items.path && "font-bold"}`}>{items.title}</span>}
             </div>
           </Link>
         </li>

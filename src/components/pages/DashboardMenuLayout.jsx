@@ -49,7 +49,7 @@ const DashboardMenuLayout = ({ children }) => {
               <Icons activeTitle={false} />
             </ul>
           </div>
-          <div className={`min-h-screen rounded-tr-2xl transition-all duration-200 ${sidebarActive ? "w-50" : "w-0 overflow-hidden"}`}>
+          <div className={`min-h-screen rounded-tr-2xl transition-[width] duration-200 ${sidebarActive ? "w-50" : "w-0 overflow-hidden"}`}>
             <header className="flex justify-between items-center mt-5 mx-5">
               <Link to="/">
                 <h1 className="text-2xl font-bold md:text-2x cursor-pointerl">ArFinance</h1>

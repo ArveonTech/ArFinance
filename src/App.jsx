@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DashboardMenuLayout from "./components/pages/DashboardMenuLayout";
 import AddPages from "./components/pages/AddPages";
 import HistoryPages from "./components/pages/HistoryPages";
-import AnalysisPages from "./components/pages/AnalysisPages";
+import AnalysisPages from "./components/pages/AnalyticsPages";
 import SettingsPages from "./components/pages/SettingsPages";
 import NotFoundPages from "./components/pages/NotFoundPages";
 import HomePages from "./components/pages/HomePages";
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/analysis",
+    path: "/analytics",
     element: (
       <DashboardMenuLayout>
         <AnalysisPages />

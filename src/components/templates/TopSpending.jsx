@@ -3,7 +3,7 @@ import { Flame } from "lucide-react";
 const TopSpending = ({ data }) => {
   if (!data || Object.keys(data).length === 0) {
     return (
-      <div className="p-4 bg-amber-100 rounded-lg w-[300px]">
+      <div className="p-4 bg-amber-100 rounded-3xl w-[300px]">
         <div className="flex justify-between items-center mb-2">
           <h1 className="text-xl font-semibold">Top Spending</h1>
           <Flame />
@@ -18,7 +18,7 @@ const TopSpending = ({ data }) => {
   const [[category, spending]] = Object.entries(data);
 
   return (
-    <div className="p-4 bg-amber-100 rounded-lg w-[300px]">
+    <div className="p-4 bg-amber-100 rounded-3xl w-[300px]">
       <div className="flex justify-between items-center mb-2">
         <h1 className="text-xl font-semibold">Top Spending</h1>
         <Flame />
