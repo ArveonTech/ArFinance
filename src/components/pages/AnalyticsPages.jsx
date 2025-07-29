@@ -56,27 +56,94 @@ const AnalysisPages = () => {
   // hari pengeluaran terbesar
   const { mostExpensiveDay } = useMostExpensiveDay(expenseDataset);
 
+  // letak perubahan dari comp parent ke setDataFilter
   const handleDataFiltering = (data) => {
     setDataFilter(data);
   };
 
+  // buat fungsi untuk dapatkan hari di bulan itu
+  const getDatesInMonth = (year, month) => {
+    const dates = [];
+    const date = new Date(year, month, 1);
+    console.log(month);
+
+    while (date.getMonth() === month) {
+      const day = String(date.getDate()).padStart(2, "0");
+      dates.push(day);
+      date.setDate(date.getDate() + 1);
+    }
+
+    return dates;
+  };
+
   // ambil data analyitics
   const { dataAnalytics } = useBalanceAll(setDataBalance, incomeDataset, expenseDataset, dataFilter);
+  const { type, year, month } = dataFilter;
+
+  const labelsBarDetail = (type, year, month) => {
+    if (type && !year && !month) return yearList;
+    if (type && year && !month) return monthsList.short;
+    if (type && year && month) {
+      const indexMonth = monthsList.long.indexOf(month);
+
+      const daysMonth = getDatesInMonth(year, indexMonth, 1);
+
+      return daysMonth;
+    }
+    return yearList;
+  };
+
+  const datasetBarDetail = (type, year, month) => {
+    if (type && !year && !month)
+      return [
+        {
+          label: dataAnalytics.income ? "income" : "",
+          data: dataAnalytics.income?.map((d) => d.data) || [],
+          backgroundColor: dataAnalytics.income?.length > 0 ? dataAnalytics.income.map((d) => d.color) : undefined,
+        },
+        {
+          label: dataAnalytics.expense ? "expense" : "",
+          data: dataAnalytics.expense?.map((d) => d.data) || [],
+          backgroundColor: dataAnalytics.expense?.length > 0 ? dataAnalytics.expense.map((d) => d.color) : undefined,
+        },
+      ];
+    if (type && year && !month)
+      return [
+        {
+          label: type,
+          data: Object.values(dataAnalytics),
+          backgroundColor: type === "income" ? "#00CE59" : "#FC3C42",
+          borderRadius: 2,
+        },
+      ];
+
+    if (type && year && month)
+      return [
+        {
+          label: type,
+          data: Object.values(dataAnalytics),
+          backgroundColor: type === "income" ? "#00CE59" : "#FC3C42",
+          borderRadius: 2,
+        },
+      ];
+
+    return [
+      {
+        label: dataAnalytics.income ? "income" : "",
+        data: dataAnalytics.income?.map((d) => d.data) || [],
+        backgroundColor: dataAnalytics.income?.length > 0 ? dataAnalytics.income.map((d) => d.color) : undefined,
+      },
+      {
+        label: dataAnalytics.expense ? "expense" : "",
+        data: dataAnalytics.expense?.map((d) => d.data) || [],
+        backgroundColor: dataAnalytics.expense?.length > 0 ? dataAnalytics.expense.map((d) => d.color) : undefined,
+      },
+    ];
+  };
 
   const dataBarDetail = {
-    labels: yearList,
-    datasets: [
-      {
-        label: "Income",
-        data: dataAnalytics.income?.map((d) => d.data) || [],
-        backgroundColor: dataAnalytics.income?.map((d) => d.color) || [],
-      },
-      {
-        label: "Expense",
-        data: dataAnalytics.expense?.map((d) => d.data) || [],
-        backgroundColor: dataAnalytics.expense?.map((d) => d.color) || [],
-      },
-    ],
+    labels: labelsBarDetail(type, year, month),
+    datasets: datasetBarDetail(type, year, month),
   };
 
   const optionsBarDetail = {
@@ -107,7 +174,7 @@ const AnalysisPages = () => {
         <ExpneseByCate dataDistriCate={dataDistriCate} />
         <Insight data={{ LowSpending, totalTransactions, mostExpensiveDay }} />
       </div>
-      <div className="flex justify-center my-10">
+      <div className="flex justify-center my-8">
         <div className="w-[350px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[470px] lg:w-[700px] lg:h-[470px] xl:w-[900px] 2xl:w-[1000px] shadow-lg rounded-3xl bg-white pb-28 md:pb-32 px-2 pt-4">
           <h1 className="text-xl text-center mb-4 font-semibold"> Financial Overview Detail</h1>
           <FilteringAnalytics data={{ handleDataFiltering, incomeDataset, expenseDataset, setDataBalance }} />

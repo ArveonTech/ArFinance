@@ -42,6 +42,7 @@ const FilteringAnalytics = ({ data }) => {
       setFilter((prev) => ({
         ...prev,
         [e.target.name]: e.target.value,
+        month: "",
       }));
     }
 
