@@ -51,7 +51,7 @@ const LastAdded = ({ data }) => {
           </div>
         ))
       ) : (
-        <div className="bg-slate-600 w-[300px] rounded-2xl p-4">
+        <div className="bg-card w-[300px] rounded-2xl p-4">
           <div className="flex justify-between items-center mb-2 col-span-2 text-white">
             <p className="flex items-center gap-2 font-bold">Last Added</p>
             <ClockPlus size={20} />

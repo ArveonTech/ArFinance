@@ -5,6 +5,10 @@ import { ToastContainer, toast, Bounce } from "react-toastify";
 import { CalendarDays, SquarePen, CirclePoundSterling, RefreshCcw, ListTree, Plus, Save } from "lucide-react";
 import { useLocation, useNavigate } from "react-router";
 import { statusCreate } from "../features/createStatusSlice";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
 
 const AddPages = () => {
   const setDataBalance = useSelector((state) => state.financeData);
@@ -112,10 +116,10 @@ const AddPages = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center mx-10">
-      <form action="" ref={formRef} onSubmit={(e) => handleSubmit(e)} className="max-w-md w-full">
-        <div className="max-w-md w-full bg-white/40 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl p-6 md:p-8 space-y-5">
+      <form action="" ref={formRef} onSubmit={(e) => handleSubmit(e)} className="max-w-md w-full" data-aos="fade-up" data-aos-delay="200" data-aos-duration="500" data-aos-once="true">
+        <div className="max-w-md w-full bg-form backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl p-6 md:p-8 space-y-5">
           <div className="relative">
-            <h2 className="text-2xl font-bold text-gray-700 text-center">{dataEdit ? "Edit Finance" : "Add Finance"}</h2>
+            <h2 className="text-2xl font-bold text-primary text-center">{dataEdit ? "Edit Finance" : "Add Finance"}</h2>
             {dataEdit ? (
               <button className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-1 pr-2 cursor-pointer" onClick={() => handleAddForm()}>
                 <Plus size={32} />
@@ -127,7 +131,7 @@ const AddPages = () => {
 
           {/* Date */}
           <div>
-            <label htmlFor="date" className="block text-sm font-bold text-gray-700 mb-2">
+            <label htmlFor="date" className="block text-sm font-bold  mb-2">
               <div className="flex items-center gap-2">
                 <CalendarDays size={20} />
                 <span>Date :</span>
@@ -138,7 +142,7 @@ const AddPages = () => {
 
           {/* Description */}
           <div>
-            <label htmlFor="description" className="block text-sm font-bold text-gray-700 mb-2">
+            <label htmlFor="description" className="block text-sm font-bold  mb-2">
               <div className="flex items-center gap-2">
                 <SquarePen size={20} />
                 <span>Description :</span>
@@ -157,7 +161,7 @@ const AddPages = () => {
 
           {/* Amount */}
           <div>
-            <label htmlFor="amount" className="block text-sm font-bold text-gray-700 mb-2">
+            <label htmlFor="amount" className="block text-sm font-bold  mb-2">
               <div className="flex items-center gap-2">
                 <CirclePoundSterling size={20} />
                 <span>Amount :</span>
@@ -183,7 +187,7 @@ const AddPages = () => {
 
           {/* Type */}
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-4">
+            <label className="block text-sm font-bold  mb-4">
               <div className="flex items-center gap-2">
                 <RefreshCcw size={20} />
                 <span>Type :</span>
@@ -192,24 +196,24 @@ const AddPages = () => {
             <div className="flex space-x-4">
               <label htmlFor="income" className="inline-flex items-center">
                 <input id="income" type="radio" name="type" value="income" className="text-green-500" checked={formData.type === "income"} required onChange={(e) => handleChange(e)} />
-                <span className="ml-2 text-md text-gray-700">Income</span>
+                <span className="ml-2 text-md ">Income</span>
               </label>
               <label htmlFor="expense" className="inline-flex items-center">
                 <input id="expense" type="radio" name="type" value="expense" className="text-red-500" checked={formData.type === "expense"} onChange={(e) => handleChange(e)} />
-                <span className="ml-2 text-md text-gray-700">Expense</span>
+                <span className="ml-2 text-md ">Expense</span>
               </label>
             </div>
           </div>
 
           {/* Category */}
           <div>
-            <label htmlFor="category" className="block text-sm font-bold text-gray-700 mb-2">
+            <label htmlFor="category" className="block text-sm font-bold  mb-2">
               <div className="flex items-center gap-2">
                 <ListTree size={20} />
                 <span>Category</span>
               </div>
             </label>
-            <select id="category" name="category" value={formData.category} className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500" required onChange={(e) => handleChange(e)}>
+            <select id="category" name="category" value={formData.category} className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 bg-card focus:ring-blue-500 focus:border-blue-500" required onChange={(e) => handleChange(e)}>
               <option value="">Select category</option>
               {formData.type === "income" ? (
                 <>
@@ -229,7 +233,7 @@ const AddPages = () => {
           </div>
 
           {/* Submit Button */}
-          <button type="submit" className="w-full bg-emerald-500/80 hover:bg-emerald-700/90 backdrop-blur-md text-white font-semibold py-2 px-4 rounded-lg shadow-md transition cursor-pointer flex justify-center gap-2">
+          <button type="submit" className="w-full bg-emerald-500/80 hover:bg-emerald-700/90 backdrop-blur-md  font-semibold py-2 px-4 rounded-lg shadow-md transition cursor-pointer flex justify-center gap-2">
             <Save />
             Save
           </button>

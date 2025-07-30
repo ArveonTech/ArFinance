@@ -3,7 +3,7 @@ import { SquareChartGantt } from "lucide-react";
 const Insight = ({ data }) => {
   if (!data || Object.keys(data).length === 0) {
     return (
-      <div className="w-[350px] mx-auto bg-white p-2 rounded-2xl shadow-2xl md:w-[400px] mt-10">
+      <div className="w-[350px] mx-auto bg-card p-2 rounded-2xl shadow-2xl md:w-[400px] mt-10">
         <div className="flex items-center mb-2 justify-center relative">
           <h1 className="text-xl font-semibold text-center">Insight</h1>
           <SquareChartGantt className="absolute right-2" />
@@ -28,7 +28,7 @@ const Insight = ({ data }) => {
   const { date, amount } = mostExpensiveDay;
 
   return (
-    <div className="w-[350px] sm:w-[450px] mx-auto bg-white p-5 rounded-2xl shadow-2xl md:w-[400px] lg:w-[550px]">
+    <div className="w-[350px] sm:w-[450px] mx-auto bg-card p-5 rounded-2xl shadow-2xl md:w-[400px] lg:w-[550px]">
       <div className="flex items-center mb-2 justify-center relative">
         <h1 className="text-xl font-semibold text-center">Insight</h1>
         <SquareChartGantt className="absolute right-2" />
@@ -62,10 +62,10 @@ const Insight = ({ data }) => {
         <div className="p-3">
           <p className="text-[17px] text-center font-medium mb-2">Most expensive day</p>
           <hr className="mb-4 w-11/12 mx-auto" />
-          {mostExpensiveDay ? (
+          {mostExpensiveDay && Object.entries(mostExpensiveDay).length === 0 ? (
             <div className="gap-y-10 text-lg text-center ">
               <p>{date}</p>
-              <p className="text-red-400">Rp.{Number(amount).toLocaleString("id-ID")}</p>
+              <p className="text-red-400">Rp.{Number(amount || 0).toLocaleString("id-ID")}</p>
             </div>
           ) : (
             <p className="text-center text-lg text-slate-500 italic">Most Expensive no data yet</p>

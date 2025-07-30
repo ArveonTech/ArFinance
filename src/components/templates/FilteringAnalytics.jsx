@@ -73,13 +73,13 @@ const FilteringAnalytics = ({ data }) => {
 
   return (
     <div className="flex gap-2 mb-4 ml-2 md:mb-5 lg:mb-7">
-      <select id="category" name="type" className="mt-1 block  border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500" value={filter.type} onChange={(e) => handleChange(e)}>
+      <select id="category" name="type" className="mt-1 block  border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-card" value={filter.type} onChange={(e) => handleChange(e)}>
         <option value="">All Type</option>
         <option value="income">Income</option>
         <option value="expense">Expense</option>
       </select>
       {filter.type && (
-        <select id="year" name="year" className="mt-1 block  border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500" value={filter.year} onChange={(e) => handleChange(e)}>
+        <select id="year" name="year" className="mt-1 block  border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-card" value={filter.year} onChange={(e) => handleChange(e)}>
           <option value="">All Year</option>
           {filteringYears
             .sort((a, b) => a - b)
@@ -91,7 +91,7 @@ const FilteringAnalytics = ({ data }) => {
         </select>
       )}
       {filter.year && (
-        <select id="month" name="month" className="mt-1 block  border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500" value={filter.month} onChange={(e) => handleChange(e)}>
+        <select id="month" name="month" className="mt-1 block  border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-card" value={filter.month} onChange={(e) => handleChange(e)}>
           <option value="">All Month</option>
           {monthOptions.map((monthItems, i) => (
             <option value={monthItems} key={i}>

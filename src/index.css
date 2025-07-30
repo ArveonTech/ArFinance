@@ -5,17 +5,50 @@
 }
 
 @theme {
-  --color-base: #ecfae5;
-  --color-sidebar: #6a9e6f;
-  --color-soft: #ddf6d2;
-  --color-light: #cae8bd;
-  --color-main: #b0db9c;
-  --color-primary: #111827;
+  /* === Light Mode === */
+  --color-primary: #111827; /* untuk text */
+  --color-form: #f9fafb; /* untuk form */
+  --color-card: #ffffff; /* untuk analytics */
+  --color-setting: #4ade80; /* untuk setting*/
+  --color-border: #008236;
+}
+.dark {
+  /* === Dark Mode === */
+  --color-primary: #f3f4f6;
+  --color-form: #222c3d;
+  --color-card: #1e293b;
+  --color-setting: #1e293b;
+  --color-border: #2a3646;
 }
 
 body {
   font-family: "Lato", sans-serif;
-  background-image: linear-gradient(to bottom right, #eef9ef, #aaedcc);
 }
 
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+  .bg-navbar {
+    background-color: #92c7a3;
+  }
+
+  .dark .bg-navbar {
+    background-color: #1c2634;
+  }
+
+  .bg-sidebar {
+    background: linear-gradient(to bottom, #92c7a3, #4a8660);
+  }
+
+  .dark .bg-sidebar {
+    background: linear-gradient(to bottom right, #111827, #1c2634); /* contoh gradasi dark */
+  }
+
+  .bg-base {
+    background: linear-gradient(to bottom right, #eef9ef, #aaedcc);
+  }
+  .dark .bg-base {
+    background: linear-gradient(to bottom right, #1c2634, #111827);
+  }
+}

@@ -9,8 +9,9 @@ import useDataSet from "../../hooks/useDataSet";
 import useMostExpensiveDay from "../../hooks/useMostExpensiveDay";
 import ExpneseByCate from "../templates/ExpenseByCate";
 import FilteringAnalytics from "../templates/filteringAnalytics";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useBalanceAll from "../../hooks/analytics/useBalanceAll";
+import { useTheme } from "../features/ThemeProvider";
 
 ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
@@ -31,6 +32,9 @@ for (let y = minYear; y <= maxYear; y++) {
 }
 
 const AnalysisPages = () => {
+  // ambil theme
+  const { theme, setTheme } = useTheme();
+
   // ambil data dari local lewat store
   const setDataBalance = useSelector((state) => state.financeData);
 
@@ -141,6 +145,12 @@ const AnalysisPages = () => {
     ];
   };
 
+  const getThemeColor = (theme) => {
+    if (theme === "dark") return "#fff";
+
+    return "#000";
+  };
+
   const dataBarDetail = {
     labels: labelsBarDetail(type, year, month),
     datasets: datasetBarDetail(type, year, month),
@@ -154,7 +164,7 @@ const AnalysisPages = () => {
         display: true,
         position: "bottom",
         labels: {
-          color: "#000",
+          color: getThemeColor(theme),
           font: {
             size: 16,
           },
@@ -169,13 +179,13 @@ const AnalysisPages = () => {
   };
 
   return (
-    <div>
+    <div className="text-primary">
       <div className="mt-10 flex flex-wrap gap-16">
         <ExpneseByCate dataDistriCate={dataDistriCate} />
         <Insight data={{ LowSpending, totalTransactions, mostExpensiveDay }} />
       </div>
       <div className="flex justify-center my-8">
-        <div className="w-[350px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[470px] lg:w-[700px] lg:h-[470px] xl:w-[900px] 2xl:w-[1000px] shadow-lg rounded-3xl bg-white pb-28 md:pb-32 px-2 pt-4">
+        <div className="w-[350px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[470px] lg:w-[700px] lg:h-[470px] xl:w-[900px] 2xl:w-[1000px] shadow-lg rounded-3xl bg-card pb-28 md:pb-32 px-2 pt-4">
           <h1 className="text-xl text-center mb-4 font-semibold"> Financial Overview Detail</h1>
           <FilteringAnalytics data={{ handleDataFiltering, incomeDataset, expenseDataset, setDataBalance }} />
           <Bar data={dataBarDetail} options={optionsBarDetail} style={{ width: "100px" }} />

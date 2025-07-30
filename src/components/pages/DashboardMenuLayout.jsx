@@ -2,6 +2,7 @@ import { AlignLeft, X, AlignRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import Icons from "../atoms/Icons/Icons";
 import { Link } from "react-router";
+import { useTheme } from "../features/ThemeProvider";
 
 const DashboardMenuLayout = ({ children }) => {
   const [sidebarActive, setSidebarActive] = useState(true);
@@ -18,12 +19,12 @@ const DashboardMenuLayout = ({ children }) => {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row bg-gradient-to-br from-[#eef9ef] to-[#aaedcc] min-h-screen">
+    <div className="flex flex-col md:flex-row bg-base min-h-screen text-primary">
       <div className="sticky top-0 z-20">
         {/* Mobile */}
         <div className="block md:hidden">
           <div className={`h-16`}>
-            <div className={`flex justify-between h-full bg-sidebar items-center z-20 transition-all duration-300 relative ${navActive ? "border-b-2" : "shadow-lg"} ${isSticky ? "px-3" : "px-7"}`}>
+            <div className={`flex justify-between h-full bg-navbar items-center z-20 transition-all duration-300 relative ${navActive ? "border-b-2" : "shadow-lg"} ${isSticky ? "px-3" : "px-7"}`}>
               <Link to="/">
                 <h1 className="text-2xl font-bold hover:border-b-2 cursor-pointer">ArFinance</h1>
               </Link>
@@ -32,7 +33,7 @@ const DashboardMenuLayout = ({ children }) => {
               </div>
             </div>
             <div className={`absolute w-full transition-all duration-500 z-10 ${navActive ? "inset-y-16 pointer-events-auto" : "-inset-y-70 pointer-events-none"}`}>
-              <div className="bg-sidebar rounded-b-2xl">
+              <div className="bg-navbar rounded-b-2xl">
                 <ul className="flex flex-col items-center py-6 gap-5">
                   <Icons />
                 </ul>
@@ -42,8 +43,8 @@ const DashboardMenuLayout = ({ children }) => {
         </div>
 
         {/* Desktop */}
-        <div className="hidden md:flex sticky top-0 bg-gradient-to-b from-[#92c7a3] to-[#4a8660]">
-          <div className={`border-r-2 border-green-700 w-20 transition-border delay-200 ${sidebarActive ? "border-none" : ""}`}>
+        <div className="hidden md:flex sticky top-0 bg-sidebar border-r-2 border-border">
+          <div className={` w-20 transition-border delay-200 ${sidebarActive ? "border-none" : ""}`}>
             <header className="flex justify-center pt-5">{sidebarActive ? "" : <AlignLeft className="cursor-pointer" size={32} strokeWidth={3} onClick={() => setSidebarActive((prev) => !prev)} />}</header>
             <ul className={`flex flex-col items-center gap-8 ${sidebarActive ? "mt-[72px]" : "mt-10"}`}>
               <Icons activeTitle={false} />
@@ -64,7 +65,7 @@ const DashboardMenuLayout = ({ children }) => {
       </div>
 
       {/* === Main Content === */}
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 dark:bg-base">{children}</main>
     </div>
   );
 };

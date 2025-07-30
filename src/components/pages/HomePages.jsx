@@ -131,7 +131,7 @@ const HomePages = () => {
   };
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col text-primary">
       <div className="pt-5 hidden md:block md:w-full">
         <div className="flex justify-between gap-5 items-center mx-10">
           <div className="flex items-center gap-5">{timeOfDay()}</div>
@@ -141,16 +141,16 @@ const HomePages = () => {
       <div className="flex pt-10 justify-around gap-10 px-5 flex-wrap overflow-hidden ">
         <CardBalance data={cardBalance} />
       </div>
-      <hr className="border-2 shadow-2xl w-11/12 mx-auto border-sidebar rounded-3xl hidden md:block mt-12" />
+      <hr className="border-2 shadow-2xl w-11/12 mx-auto border-border rounded-3xl hidden md:block mt-12" />
       <div className="md:mx-0 flex flex-wrap sm:flex-col items-center justify-center gap-20 md:flex-row md:justify-baseline mt-20 lg:mt-10 mb-10 flex-1">
         <div className="relative overflow-hidden">
-          <div className="sm:w-[430px] h-[400px] md:w-[470px] md:h-[400px] lg:w-[600px] shadow-lg rounded-3xl bg-white pb-12 px-2 pt-4" data-aos="fade-up-right" data-aos-delay="200" data-aos-duration="500" data-aos-once="true">
-            <h1 className="text-xl text-center mb-4 font-semibold"> Financial Overview for {yearNow}</h1>
+          <div className="sm:w-[430px] h-[400px] md:w-[470px] md:h-[400px] lg:w-[600px] shadow-lg rounded-3xl bg-white pb-12 px-2 pt-4" data-aos="fade-up-right" data-aos-delay="100" data-aos-duration="500" data-aos-once="true">
+            <h1 className="text-xl text-center mb-4 font-semibold text-black"> Financial Overview for {yearNow}</h1>
             <Bar key={chartKey} data={data} options={options} />{" "}
           </div>
         </div>
         <div className="relative overflow-hidden">
-          <div className="flex flex-col justify-center items-center gap-5" data-aos="fade-up-left" data-aos-delay="200" data-aos-duration="500" data-aos-once="true">
+          <div className="flex flex-col justify-center items-center gap-5" data-aos="fade-up-left" data-aos-delay="100" data-aos-duration="500" data-aos-once="true">
             <TopSpending data={topSpending} />
             <LastAdded data={arrayLastAdded} />
           </div>
