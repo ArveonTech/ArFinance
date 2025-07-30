@@ -8,7 +8,7 @@ import useTotalTransactions from "../../hooks/useTotalTransactions";
 import useDataSet from "../../hooks/useDataSet";
 import useMostExpensiveDay from "../../hooks/useMostExpensiveDay";
 import ExpneseByCate from "../templates/ExpenseByCate";
-import FilteringAnalytics from "../templates/filteringAnalytics";
+import FilteringAnalytics from "../templates/FilteringAnalytics";
 import { useState } from "react";
 import useBalanceAll from "../../hooks/analytics/useBalanceAll";
 import { useTheme } from "../features/ThemeProvider";
