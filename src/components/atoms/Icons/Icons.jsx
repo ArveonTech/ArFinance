@@ -20,7 +20,7 @@ const Icons = ({ activeTitle = true, activeIcons = true }) => {
         <li key={i}>
           <Link to={items.path}>
             <div className="flex gap-2">
-              {activeIcons && <span className={`${location.pathname === items.path && "drop-shadow-sm drop-shadow-green-600"}`}>{items.icon}</span>}
+              {activeIcons && <span className={`${location.pathname === items.path && "drop-shadow-sm drop-shadow-active"}`}>{items.icon}</span>}
               {activeTitle && <span className={`${location.pathname === items.path && "font-bold"}`}>{items.title}</span>}
             </div>
           </Link>

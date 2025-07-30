@@ -11,6 +11,7 @@
   --color-card: #ffffff; /* untuk analytics */
   --color-setting: #4ade80; /* untuk setting*/
   --color-border: #008236;
+  --color-active: #05df72;
 }
 .dark {
   /* === Dark Mode === */
@@ -19,6 +20,7 @@
   --color-card: #1e293b;
   --color-setting: #1e293b;
   --color-border: #2a3646;
+  --color-active: #94a3b8;
 }
 
 body {
