@@ -1,5 +1,3 @@
-Siap, Ar! Jadi kita buat dua bagian terpisah di README-nya:
-
 # 💰 arFinance – Aplikasi Keuangan Pribadi
 
 **arFinance** adalah aplikasi sederhana buat ngatur keuangan harian. Cocok buat kamu yang pengen tahu uangnya lari ke mana tiap bulan.
@@ -7,6 +5,8 @@ Siap, Ar! Jadi kita buat dua bagian terpisah di README-nya:
 > Dibuat dengan React + Tailwind CSS. Data disimpan di browser (localStorage), tanpa backend.
 
 ---
+
+## ☁️ Bahasa Indonesia
 
 ## ⚙️ Teknologi yang Digunakan
 
@@ -66,15 +66,7 @@ Semua data disimpan di **localStorage**, jadi:
 
 Proyek ini bebas digunakan untuk pembelajaran dan pengembangan pribadi.
 
----
-
-# 💰 arFinance – Personal Finance Tracker
-
-**arFinance** is a simple app to help you manage your daily finances. Perfect for individuals who want to track where their money goes each month.
-
-> Built with React + Tailwind CSS. All data is stored locally in the browser using localStorage — no backend required.
-
----
+## 🌐 English Version
 
 ## ⚙️ Technologies Used
 
